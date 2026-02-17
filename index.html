@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дыхание Любви</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== НАСЫЩЕННАЯ РОЗОВО-ЗЕЛЁНАЯ ПАЛИТРА ===== */
+        :root {
+            /* Светлая тема — яркие пастельные тона */
+            --bg: #ffeae5;
+            --surface: #ffdbd1;
+            --surface-hover: #ffcbbd;
+            --text-primary: #3a2c28;
+            --text-secondary: #684e48;
+            --accent: #f58b8b;
+            --accent-light: #ffbcbc;
+            --accent-dark: #d46b6b;
+            --border: #e7b9ae;
+            --shadow: rgba(200, 120, 120, 0.25);
+            --card-bg: #fff6f2;
+            --footer-bg: #e6c1b5;
+            --glow: rgba(245, 139, 139, 0.6);
+            --green-accent: #8fc0a9;
+            --green-light: #b2dece;
+            --green-dark: #5f8b7a;
+        }
+
+        [data-theme="dark"] {
+            --bg: #2b1b18;
+            --surface: #4d322e;
+            --surface-hover: #6b4943;
+            --text-primary: #fceeea;
+            --text-secondary: #dbb9b0;
+            --accent: #f58b8b;
+            --accent-light: #b36b6b;
+            --accent-dark: #d46b6b;
+            --border: #8b5f57;
+            --shadow: rgba(0, 0, 0, 0.5);
+            --card-bg: #5e403b;
+            --footer-bg: #2f201d;
+            --glow: rgba(245, 139, 139, 0.5);
+            --green-accent: #5b8b7a;
+            --green-light: #436c5e;
+            --green-dark: #2b4a3f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: radial-gradient(circle at 20% 30%, var(--accent-light) 0%, transparent 30%),
+                        radial-gradient(circle at 80% 70%, var(--green-light) 0%, transparent 35%),
+                        var(--bg);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color 0.4s ease, color 0.3s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== ЧАСТИЦЫ ===== */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(4px);
+            animation: float 20s infinite linear;
+            opacity: 0.6;
+        }
+
+        .particle.pink {
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .particle.green {
+            background: var(--green-accent);
+            box-shadow: 0 0 15px var(--green-accent);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0) rotate(0deg);
+                opacity: 0.3;
+            }
+            25% { opacity: 0.7; }
+            50% { opacity: 0.4; }
+            75% { opacity: 0.7; }
+            100% {
+                transform: translateY(-100vh) translateX(20vw) rotate(360deg);
+                opacity: 0.3;
+            }
+        }
+
+        .particle:nth-child(1) { left: 2%; top: 5%; width: 20px; height: 20px; animation-duration: 28s; }
+        .particle:nth-child(2) { left: 12%; top: 60%; width: 14px; height: 14px; animation-duration: 32s; }
+        .particle:nth-child(3) { left: 22%; top: 30%; width: 18px; height: 18px; animation-duration: 24s; }
+        .particle:nth-child(4) { left: 32%; top: 75%; width: 12px; height: 12px; animation-duration: 30s; }
+        .particle:nth-child(5) { left: 42%; top: 15%; width: 22px; height: 22px; animation-duration: 26s; }
+        .particle:nth-child(6) { left: 52%; top: 50%; width: 16px; height: 16px; animation-duration: 34s; }
+        .particle:nth-child(7) { left: 62%; top: 25%; width: 20px; height: 20px; animation-duration: 22s; }
+        .particle:nth-child(8) { left: 72%; top: 85%; width: 14px; height: 14px; animation-duration: 36s; }
+        .particle:nth-child(9) { left: 82%; top: 10%; width: 18px; height: 18px; animation-duration: 30s; }
+        .particle:nth-child(10) { left: 92%; top: 40%; width: 16px; height: 16px; animation-duration: 28s; }
+        .particle:nth-child(11) { left: 7%; top: 90%; width: 20px; height: 20px; animation-duration: 32s; }
+        .particle:nth-child(12) { left: 17%; top: 2%; width: 14px; height: 14px; animation-duration: 26s; }
+        .particle:nth-child(13) { left: 27%; top: 45%; width: 18px; height: 18px; animation-duration: 34s; }
+        .particle:nth-child(14) { left: 37%; top: 65%; width: 12px; height: 12px; animation-duration: 30s; }
+        .particle:nth-child(15) { left: 47%; top: 80%; width: 22px; height: 22px; animation-duration: 28s; }
+        .particle:nth-child(16) { left: 57%; top: 35%; width: 16px; height: 16px; animation-duration: 32s; }
+        .particle:nth-child(17) { left: 67%; top: 55%; width: 20px; height: 20px; animation-duration: 26s; }
+        .particle:nth-child(18) { left: 77%; top: 20%; width: 18px; height: 18px; animation-duration: 30s; }
+        .particle:nth-child(19) { left: 87%; top: 70%; width: 14px; height: 14px; animation-duration: 34s; }
+        .particle:nth-child(20) { left: 97%; top: 95%; width: 16px; height: 16px; animation-duration: 28s; }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== ШАПКА ===== */
+        header {
+            background: rgba(255, 230, 230, 0.7);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 8px 30px var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        [data-theme="dark"] header {
+            background: rgba(45, 30, 28, 0.8);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #f58b8b, #8fc0a9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 10px var(--glow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            color: var(--text-secondary);
+            padding-bottom: 5px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--green-accent));
+            transition: width 0.3s;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .theme-toggle {
+            background: linear-gradient(145deg, var(--surface), var(--surface-hover));
+            border: none;
+            border-radius: 40px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid var(--border);
+            box-shadow: 0 6px 15px var(--shadow);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px var(--glow);
+            background: var(--surface-hover);
+        }
+
+        /* ===== КОНТЕНТ СТРАНИЦ ===== */
+        .page {
+            display: none;
+            padding: 60px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--green-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            text-shadow: 0 2px 10px var(--glow);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent), var(--green-accent));
+            border-radius: 5px;
+            box-shadow: 0 2px 15px var(--glow);
+        }
+
+        .subsection-title {
+            font-size: 2.2rem;
+            margin: 50px 0 30px;
+            color: var(--text-primary);
+            border-left: 10px solid var(--accent);
+            padding-left: 20px;
+            background: linear-gradient(90deg, var(--surface), transparent);
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* ===== ПОЯСНЕНИЕ ДРЕСС-КОДА ===== */
+        .dresscode-note {
+            background: var(--card-bg);
+            padding: 25px 35px;
+            border-radius: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 30px var(--shadow);
+            border: 2px dashed var(--accent);
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--text-primary);
+            backdrop-filter: blur(4px);
+        }
+
+        .dresscode-note p {
+            margin-bottom: 10px;
+        }
+
+        .dresscode-note strong {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Герой (главная) */
+        .hero {
+            background: radial-gradient(circle at 20% 30%, var(--accent-light), transparent 40%),
+                        radial-gradient(circle at 80% 70%, var(--green-light), transparent 40%),
+                        var(--surface);
+            border-radius: 50px;
+            padding: 80px 60px;
+            color: var(--text-primary);
+            box-shadow: 0 30px 50px var(--shadow);
+            border: 2px solid var(--border);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-dark), var(--green-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+        }
+
+        .hero .breath-description {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            border-left: 8px solid var(--accent);
+            padding: 35px;
+            margin-top: 30px;
+            font-style: italic;
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            border-radius: 0 40px 40px 0;
+            box-shadow: 0 20px 35px var(--shadow);
+            border: 1px solid var(--green-light);
+        }
+
+        [data-theme="dark"] .hero .breath-description {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* ===== КАРТОЧКИ (общие) ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 30px 25px;
+            border-radius: 35px;
+            box-shadow: 0 25px 40px var(--shadow);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--green-accent));
+            opacity: 0.8;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 35px 55px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--green-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .card .requirement {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .card ul {
+            list-style: disc;
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .card li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .card .note {
+            background: var(--surface);
+            padding: 10px;
+            border-radius: 15px;
+            margin-top: 15px;
+            font-style: italic;
+            border-left: 4px solid var(--green-accent);
+        }
+
+        /* Карточки для рецептов */
+        .recipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .recipe-card {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 35px;
+            box-shadow: 0 25px 40px var(--shadow);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .recipe-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--accent), var(--green-accent));
+            opacity: 0.8;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 35px 55px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .recipe-card h4 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--green-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .recipe-card h5 {
+            font-size: 1.3rem;
+            margin: 20px 0 10px;
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+
+        .recipe-card ul, .recipe-card ol {
+            margin-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        .recipe-card li {
+            margin-bottom: 8px;
+        }
+
+        .recipe-card .properties {
+            background: var(--surface);
+            padding: 15px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 5px solid var(--green-accent);
+        }
+
+        /* Карточки действий */
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .action-card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 30px;
+            box-shadow: 0 20px 35px var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.2s;
+        }
+
+        .action-card:hover {
+            background: var(--surface-hover);
+            border-color: var(--accent);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 40px var(--glow);
+        }
+
+        .action-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .action-points {
+            background: linear-gradient(145deg, var(--green-light), var(--green-accent));
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1rem;
+            box-shadow: 0 4px 12px var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        /* ===== ДРЕСС-КОД ===== */
+        .dresscode-category {
+            margin-bottom: 70px;
+        }
+
+        .category-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+            border-left: 10px solid var(--accent);
+            padding-left: 25px;
+            background: linear-gradient(90deg, var(--surface), transparent);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .image-card {
+            background: var(--card-bg);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px var(--shadow);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+
+        .image-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 30px 45px var(--shadow);
+            border-color: var(--accent);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 220px;
+            background: linear-gradient(145deg, var(--accent-light), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        .image-card p {
+            padding: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--card-bg);
+        }
+
+        /* ===== СОСТАВ ===== */
+        .roster-section {
+            margin-bottom: 60px;
+        }
+
+        .roster-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            border-left: 10px solid var(--accent);
+            padding-left: 25px;
+            background: linear-gradient(90deg, var(--surface), transparent);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .slots-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .slot {
+            background: var(--card-bg);
+            border: 3px dashed var(--accent);
+            border-radius: 35px;
+            padding: 30px;
+            min-width: 200px;
+            flex: 1 1 180px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: 0.2s;
+            box-shadow: 0 15px 30px var(--shadow);
+            backdrop-filter: blur(2px);
+        }
+
+        .slot:hover {
+            background: var(--surface-hover);
+            border-style: solid;
+            border-color: var(--accent);
+            transform: scale(1.03);
+        }
+
+        .slot span {
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .member-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* ===== ФУТЕР ===== */
+        footer {
+            background: linear-gradient(145deg, var(--footer-bg), var(--surface));
+            color: var(--text-primary);
+            text-align: center;
+            padding: 70px 0 60px;
+            margin-top: 80px;
+            border-radius: 60px 60px 0 0;
+            border-top: 2px solid var(--border);
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 -20px 40px var(--shadow);
+        }
+
+        .footer-line {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--accent-dark), var(--green-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .footer-sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* ===== АДАПТАЦИЯ ===== */
+        @media (max-width: 800px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+            .nav-links {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                gap: 30px;
+                margin-top: 10px;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero .breath-description {
+                padding: 25px;
+                font-size: 1rem;
+            }
+            .action-card {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+            .dresscode-note {
+                padding: 20px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .nav-links {
+                gap: 20px;
+                font-size: 0.9rem;
+            }
+            .hero {
+                padding: 40px 20px;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Частицы -->
+    <div class="particles">
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+        <div class="particle pink"></div><div class="particle green"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Дыхание Любви</div>
+                <ul class="nav-links">
+                    <li><a href="#" data-page="home" class="nav-link active">Главная</a></li>
+                    <li><a href="#" data-page="dresscode" class="nav-link">Дресс-код</a></li>
+                    <li><a href="#" data-page="promotion" class="nav-link">Система повышения</a></li>
+                    <li><a href="#" data-page="roster" class="nav-link">Состав</a></li>
+                    <li><a href="#" data-page="recipes" class="nav-link">Рецепты</a></li>
+                </ul>
+                <button id="themeToggle" class="theme-toggle">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeText">Тёмная</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главная -->
+        <div id="home-page" class="page active">
+            <div class="container">
+                <div class="hero">
+                    <h1>Добро пожаловать<br>в Дыхание Любви</h1>
+                    <p>Нежность, гибкость и непоколебимая сила.</p>
+                    <div class="breath-description">
+                        <strong>Дыхание любви (恋の呼吸 Koi no Kokyū?)</strong> — дыхание, созданное лично столпом любви, Мицури Канроджи, и произошедшее от дыхания пламени. Стили и техники, использующиеся в этом стиле, могут быть успешно использованы только Мицури из-за её уникального телосложения, позволяющего ей быть невероятно гибкой, всё ещё владея большой физической силой.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Дресс-код -->
+        <div id="dresscode-page" class="page">
+            <div class="container">
+                <h2 class="section-title">Дресс-код</h2>
+                <div class="dresscode-note">
+                    <p>🌸 <strong>Дресс-код свободный</strong>, но с уважением к окружающим — не пересекай рамки приличия и сохраняй атмосферу любви и гармонии. 🌿</p>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Система повышения (НОВАЯ) -->
+        <div id="promotion-page" class="page">
+            <div class="container">
+                <h2 class="section-title">Система повышения</h2>
+                
+                <!-- Общее примечание о КД -->
+                <div class="dresscode-note" style="margin-bottom: 30px;">
+                    <p>⏳ <strong>КД на повышение:</strong></p>
+                    <p>Младший состав (Сейто ➛ Мидзуното ➛ Мидзуноэ ➛ Каното ➛ Каноэ) — <strong>раз в день</strong></p>
+                    <p>Средний состав (Тсучиното ➛ Тсучиноэ ➛ Хиното ➛ Хиноэ) — <strong>раз в два дня</strong></p>
+                    <p>Старший состав (Киното ➛ Киноэ) — <strong>раз в три дня</strong></p>
+                    <p>✨ При повышении между составами (например, Каноэ ➛ Тсучиното) КД считается в большую пользу — <strong>2 дня</strong>.</p>
+                </div>
+
+                <h3 class="subsection-title">📈 Путь повышения</h3>
+                
+                <div class="cards-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                    <!-- Сейто ➛ Мидзуното -->
+                    <div class="card">
+                        <h3>Сейто ➛ Мидзуното</h3>
+                        <ul>
+                            <li>Первым делом нужно определенно пройти финальный отбор!</li>
+                        </ul>
+                    </div>
+
+                    <!-- Мидзуното ➛ Мидзуноэ -->
+                    <div class="card">
+                        <h3>Мидзуното ➛ Мидзуноэ</h3>
+                        <ul>
+                            <li>Поднимите камень в 15 кг! (10 рп действий и 1 трай)</li>
+                            <li>Заведите медицинскую карточку в поместье бабочки!</li>
+                            <li>Приготовьте 5 онигири и поделитесь с другом! (20 рп действий)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Мидзуноэ ➛ Каното -->
+                    <div class="card">
+                        <h3>Мидзуноэ ➛ Каното</h3>
+                        <ul>
+                            <li>Поучаствуйте в одной тренировке! (скрин из строя, где будет виден ворон, собирающий строй + скрин с тренировки)</li>
+                            <li>Выполните поручение любого инструктора+</li>
+                            <li>Приготовьте лечебный чай для одного из пациентов в поместье бабочки! (10 рп действий)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Каното ➛ Каноэ -->
+                    <div class="card">
+                        <h3>Каното ➛ Каноэ</h3>
+                        <ul>
+                            <li>Сдайте устав вашему инструктору+</li>
+                            <li>Предложи своему другу пройти тест на доверие! (поймать друг друга в падении спиной назад, 10 рп действий, 2 удачных трая)</li>
+                            <li>Захватить 5 точек. (каждую во время захвата скрином)</li>
+                            <li>Пройди курс ПМП в поместье бабочки!</li>
+                        </ul>
+                    </div>
+
+                    <!-- Каноэ ➛ Тсучиното (переход в средний состав) -->
+                    <div class="card">
+                        <h3>Каноэ ➛ Тсучиното</h3>
+                        <ul>
+                            <li>Сделай 5 приседаний с тяжелым грузом на плечах! (после каждого приседания трай на усталость)</li>
+                            <li>Разомнись и сядь на шпагат! (15 рп действий + 1 трай)</li>
+                            <li>Приди в поместье бабочки и попроси провести полное медицинское обследование!</li>
+                            <li>Вылечи одного истребителя (рп)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Тсучиното ➛ Тсучиноэ -->
+                    <div class="card">
+                        <h3>Тсучиното ➛ Тсучиноэ</h3>
+                        <ul>
+                            <li>Выполни поручение одного столпа!</li>
+                            <li>Сшейте сумочку для лекарств! (25 рп действий)</li>
+                            <li>Приготовьте 10 булочек с джемом! (20 рп действий)</li>
+                            <li>Победить или оставить 50% здоровья Цугуко+</li>
+                        </ul>
+                    </div>
+
+                    <!-- Тсучиноэ ➛ Хиното -->
+                    <div class="card">
+                        <h3>Тсучиноэ ➛ Хиното</h3>
+                        <ul>
+                            <li>Убейте 6 демонов!</li>
+                            <li>Поучаствуйте в тренировке! (скрин из строя, где будет виден ворон, собирающий строй + скрин с тренировки)</li>
+                            <li>Приведите в порядок кухню в поместье бабочки! (30 рп действий - 1 трай на чистоту)</li>
+                            <li>Проведи чайную церемонию совместно с 3-мя товарищами!</li>
+                        </ul>
+                    </div>
+
+                    <!-- Хиното ➛ Хиноэ -->
+                    <div class="card">
+                        <h3>Хиното ➛ Хиноэ</h3>
+                        <ul>
+                            <li>Поучаствуй в захвате важной точки от демонов</li>
+                            <li>Сдай устав своему Цугуко+</li>
+                            <li>Найди 3-х голодных котиков на разных локациях и покорми каждого рыбкой! (6 рп действий на котика; локации: ДК, НТ, ККФ, Зимний Лес, Озеро)</li>
+                            <li>Сдай проверку курса ПМП любому сотруднику поместья!</li>
+                        </ul>
+                    </div>
+
+                    <!-- Хиноэ ➛ Киното (переход в старший состав) -->
+                    <div class="card">
+                        <h3>Хиноэ ➛ Киното</h3>
+                        <ul>
+                            <li>Получи разрешение на повышение у своего Цугуко+!</li>
+                            <li>Подними настроение 3-м столпам, вызвав их улыбки или смех!</li>
+                            <li>Окажи первую помощь пострадавшему в бою в поместье бабочки!</li>
+                            <li>Поучаствуй в мероприятии/ивенте!</li>
+                            <li>Приготовь супер-пупер сухпаек на финальный отбор для учеников!</li>
+                        </ul>
+                    </div>
+
+                    <!-- Киното ➛ Киноэ (высший) -->
+                    <div class="card">
+                        <h3>Киното ➛ Киноэ</h3>
+                        <ul>
+                            <li>Пополните запасы трав поместья бабочки! (3 вида трав по 5 штук, 2 рп действия на сбор, передайте сотруднику)</li>
+                            <li>Проведите со мной, Мицури Канроджи, дружеский спарринг (победить или оставить мне <50% здоровья)!</li>
+                            <li>Получите разрешение на повышение от меня, Мицури Канроджи!</li>
+                            <li>Обними 5 истребителей!</li>
+                            <li>Научите другого истребителя лепить сакурамоти! (20 рп действий + удачный трай у того, кого учите)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Состав -->
+        <div id="roster-page" class="page">
+            <div class="container">
+                <h2 class="section-title">Состав</h2>
+                
+                <div class="roster-section">
+                    <h3 class="roster-title">👑 Высший состав</h3>
+                    <div class="slots-container">
+                        <div class="slot"><div class="member-name">Мицури Канроджи</div>⚜️ Столп Любви</div>
+                    </div>
+                </div>
+
+                <div class="roster-section">
+                    <h3 class="roster-title">⭐ Старший состав</h3>
+                    <div class="slots-container">
+                        <div class="slot">⚜️ Слот 1<span>Цугуко</span>Харуки Окуми</div>
+                        <div class="slot">⚜️ Слот 2<span>Цугуко</span>Пустует</div>
+                    </div>
+                </div>
+
+                <div class="roster-section">
+                    <h3 class="roster-title">📌 Средний состав</h3>
+                    <div class="slots-container">
+                        <div class="slot">Слот 1<span>Инструктор</span>Пустует</div>
+                        <div class="slot">Слот 2<span>Инструктор</span>Пустует</div>
+                        <div class="slot">Слот 3<span>Инструктор</span>Пустует</div>
+                    </div>
+                </div>
+
+                <div class="roster-section">
+                    <h3 class="roster-title">🌱 Младший состав</h3>
+                    <div class="slots-container">
+                        <div class="slot">Слот 1<span>Истребитель</span>Пустует</div>
+                        <div class="slot">Слот 2<span>Истребитель</span>Пустует</div>
+                        <div class="slot">Слот 3<span>Истребитель</span>Пустует</div>
+                        <div class="slot">Слот 4<span>Истребитель</span>Пустует</div>
+                        <div class="slot">Слот 5<span>Истребитель</span>Пустует</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Рецепты -->
+        <div id="recipes-page" class="page">
+            <div class="container">
+                <h2 class="section-title">Рецепты</h2>
+
+                <h3 class="subsection-title">🍚 Основные блюда</h3>
+                <div class="recipe-grid">
+                    <!-- Сакурамоти -->
+                    <div class="recipe-card">
+                        <h4>Сакурамоти</h4>
+                        <h5>Ингредиенты:</h5>
+                        <ul>
+                            <li>домёдзи-ко (мука из клейкого риса)</li>
+                            <li>сахар</li>
+                            <li>кипячёная вода</li>
+                            <li>красный пищевой краситель</li>
+                            <li>сладкая красная бобовая паста</li>
+                            <li>солёные маринованные листья сакуры</li>
+                        </ul>
+                        <h5>Способ приготовления:</h5>
+                        <ol>
+                            <li>Приготовить пасту из красных сладких бобов Адзуки: промыть бобы, залить водой и оставить размокать. Довести до кипения и варить до размягчения. Слить воду, добавить сахар и соль, варить до загустения. Остудить.</li>
+                            <li>Вскипятить воду, заварить рисовую муку.</li>
+                            <li>В кастрюле вскипятить воду, поместить сверху дуршлаг с влажной тканью, выложить тесто и пропарить.</li>
+                            <li>Готовое тесто выложить в миску, вмешать сахар и краситель.</li>
+                            <li>Влажными руками сформировать шарики из пасты и риса. Рисовые шарики сплющить, обернуть ими шарики из пасты.</li>
+                            <li>Промыть листья сакуры, обсушить и обернуть ими сакурамоти.</li>
+                        </ol>
+                    </div>
+
+                    <!-- Онигири -->
+                    <div class="recipe-card">
+                        <h4>Онигири</h4>
+                        <h5>Ингредиенты:</h5>
+                        <ul>
+                            <li>круглый рис</li>
+                            <li>вода</li>
+                            <li>сыр тофу</li>
+                            <li>тунец/угорь/лосось на выбор</li>
+                            <li>лук/огурец на выбор</li>
+                            <li>листы нори</li>
+                        </ul>
+                        <h5>Способ приготовления:</h5>
+                        <ol>
+                            <li>Рис замочить, затем слить воду, пересыпать в кастрюлю, залить водой (1:2) и варить.</li>
+                            <li>Пока рис варится, нарезать рыбу и овощи кубиками, смешать с сыром тофу — это начинка.</li>
+                            <li>Готовый рис остудить, листы нори нарезать полосками.</li>
+                            <li>Из риса сформировать лепёшки, в центр положить начинку, сформировать треугольники так, чтобы начинка оказалась внутри.</li>
+                            <li>Обернуть каждый онигири полоской нори.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3 class="subsection-title">🍵 Чаи, Настои, Отвары</h3>
+                <div class="recipe-grid">
+                    <!-- Шиповник -->
+                    <div class="recipe-card">
+                        <h4>Шиповник</h4>
+                        <h5>Ингредиенты:</h5>
+                        <ul>
+                            <li>Сушеный шиповник</li>
+                            <li>Сушеная клюква</li>
+                            <li>Вода</li>
+                        </ul>
+                        <div class="properties">
+                            <h5>Свойства:</h5>
+                            <ul>
+                                <li>Повышает иммунитет.</li>
+                                <li>Лечит вирусные заболевания, простуду.</li>
+                                <li>Ускоряет метаболизм, способствуя быстрому обмену веществ и восстановлению.</li>
+                                <li>Помогает организму бороться с болезнетворными бактериями.</li>
+                            </ul>
+                        </div>
+                        <h5>Способ приготовления:</h5>
+                        <ol>
+                            <li>Налить в чайник воду и вскипятить.</li>
+                            <li>Всыпать в чашку сушеные плоды шиповника и клюкву.</li>
+                            <li>Слегка помять ягоды, залить кипятком, укутать и настаивать.</li>
+                            <li>Процедить через ситечко и подавать.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-line">Любовь • Котики • by HENHO</div>
+            <div class="footer-sub">s5.yufu.su:27017 • 2026</div>
+        </div>
+    </footer>
+
+    <script>
+        const pages = {
+            home: document.getElementById('home-page'),
+            dresscode: document.getElementById('dresscode-page'),
+            promotion: document.getElementById('promotion-page'),
+            roster: document.getElementById('roster-page'),
+            recipes: document.getElementById('recipes-page')
+        };
+        const navLinks = document.querySelectorAll('.nav-link');
+        function switchPage(pageId) {
+            Object.values(pages).forEach(p => p.classList.remove('active'));
+            pages[pageId].classList.add('active');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) link.classList.add('active');
+            });
+        }
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.dataset.page;
+                switchPage(pageId);
+                history.pushState({page: pageId}, '', `#${pageId}`);
+            });
+        });
+        window.addEventListener('load', function() {
+            const hash = location.hash.substring(1);
+            if (hash && pages[hash]) switchPage(hash);
+            else switchPage('home');
+        });
+        window.addEventListener('popstate', function(e) {
+            if (e.state?.page) switchPage(e.state.page);
+            else switchPage('home');
+        });
+
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const themeText = document.getElementById('themeText');
+        const body = document.body;
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            themeIcon.textContent = theme === 'dark' ? '☀️' : '🌙';
+            themeText.textContent = theme === 'dark' ? 'Светлая' : 'Тёмная';
+            localStorage.setItem('loveTheme', theme);
+        }
+        themeToggle.addEventListener('click', () => {
+            const current = body.getAttribute('data-theme');
+            setTheme(current === 'light' ? 'dark' : 'light');
+        });
+        const saved = localStorage.getItem('loveTheme') || 'light';
+        setTheme(saved);
+    </script>
+</body>
+</html>
